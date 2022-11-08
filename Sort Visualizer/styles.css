@@ -121,6 +121,7 @@ hr {
 
 .bar {
   background-color: #383532;
+  /*color: white;*/
   color: #383532;
   font-size: 4px;
   border-radius: 5px;
@@ -286,14 +287,14 @@ input[type="range"]::-webkit-slider-thumb {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 2px solid rgb(215, 153, 33);
+  border: 2px solid #d79a21bb;
   cursor: pointer;
   transition: .3s ease-in-out;
 }
   
 input[type="range"]::-webkit-slider-thumb:hover {
   background-color: #323234;
-  border: 2px solid rgb(215, 153, 33);
+  border: 2px solid #d79a21bb;
 }
   
 input[type="range"]::-webkit-slider-thumb:active {
@@ -326,7 +327,7 @@ input[type="range"]::-webkit-slider-thumb:active {
 
 .sort {
 	cursor: pointer;
-	background-color: rgb(215, 153, 33);
+	background-color: #d79a21bb;
 	margin-top: 20px;
 	height: 35px;
 	width: 125px;
@@ -344,7 +345,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   margin-top: 20px;
   height: 35px;
   width: 125px;
-  color: rgb(215, 153, 33);
+  color: #d79a21bb;
   font-size: 14px;
   font-weight: bold;
   border: none;

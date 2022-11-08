@@ -1,3 +1,5 @@
+
+
 function updateSize() {
     var x = document.getElementById("array-size").value;
     document.getElementById("data-size").innerHTML = x;
@@ -13,6 +15,10 @@ function randomNum(min, max) {
     return (Math.floor(Math.random() * (max - min + 1)) + min);
 }
 
+var nBars;
+var array;
+var heightFactor;
+
 function createArray(n) {
     var a = new Array(n); 
     for(let i=0; i<n; i++)
@@ -21,7 +27,7 @@ function createArray(n) {
 }
 
 function renderBars(array, nBars) {
-    var heightFactor = 4;
+    heightFactor = 4;
     for (var i = 0; i < nBars; i++) {
         const barContainer = document.getElementById("bars-container");
         const bar = document.createElement("div");
@@ -34,11 +40,11 @@ function renderBars(array, nBars) {
 
 function updateBars()
 {
-  var n = document.getElementById("array-size").value;
-  var a = new Array(n);
+  nBars = document.getElementById("array-size").value;
+  array = new Array(nBars);
   document.getElementById("bars-container").innerHTML = " ";
-  a = createArray(n);
-  renderBars(a, n);
+  array = createArray(nBars);
+  renderBars(array, nBars);
 }
 
 var selectedAlgo;
@@ -102,7 +108,57 @@ function updateAlgo() {
             document.getElementById('algo-tag').style.color = '#d79a21bb';
             document.getElementById('t1').checked = false;
             updateAlgoData(e[i].value);
+            selectedAlgo = e[i].value;
         }
     }
 }
 
+async function sort()
+{
+    if(selectedAlgo == "Bubble")
+        await bubble(array, nBars);
+}
+
+// delay not working
+function delay(milisec) {
+    return new Promise(resolve => {
+        setTimeout(() => { resolve('') }, milisec*1000);
+    })
+}
+
+async function bubble(a, n)
+{
+    var bar = document.getElementsByClassName("bar")
+    var speed = document.getElementById("speed")
+
+    for(var i = 0; i < n; i++)
+    {   
+        for(var j = 0; j < ( n - i -1 ); j++)
+        {
+            bar[j].style.backgroundColor = '#d79a21bb' 
+            bar[j+1].style.backgroundColor = '#d79a21bb'
+            await delay(speed)
+            if(a[j] > a[j+1])
+            {
+                bar[j].style.backgroundColor = 'rgba(215, 154, 33, 0.23)'
+                bar[j+1].style.backgroundColor = 'rgba(215, 154, 33, 0.23)'
+                await delay(speed)
+                //swap
+                var TEMP = bar[j].innerHTML
+                var temp = a[j]
+                bar[j].innerHTML = bar[j+1].innerHTML
+                a[j] = a[j + 1]
+                bar[j+1].innerHTML = TEMP
+                a[j+1] = temp
+                bar[j].style.height = a[j] * heightFactor + "px"
+                bar[j+1].style.height = a[j+1] * heightFactor + "px"      
+                await delay(speed)          
+            }
+            bar[j].style.backgroundColor = '#383532'
+            bar[j+1].style.backgroundColor = '#383532' 
+            await delay(speed)   
+        }
+        bar[n-i-1].style.backgroundColor = '#d79a21bb'
+        await delay(speed) 
+    }
+}
