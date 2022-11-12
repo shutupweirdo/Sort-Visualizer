@@ -113,10 +113,22 @@ function updateAlgo() {
     }
 }
 
-async function sort()
+function sort()
 {
-    if(selectedAlgo == "Bubble")
-        await bubble(array, nBars);
+    switch(selectedAlgo)
+    {
+        case "Bubble": bubble(array, nBars);
+        break;
+        case "Selection":  
+        break;
+        case "Insertion":  
+        break;
+        case "Quick":  
+        break;
+        case "Merge":  
+        break;
+        default: alert("Select an algorithm!");
+    }
 }
 
 // delay not working
