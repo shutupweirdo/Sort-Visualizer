@@ -27,6 +27,7 @@ div {
 
 header {
   display: block;
+  width: 100%;
 }
 
 h3 {
@@ -121,9 +122,11 @@ hr {
 
 .bar {
   background-color: #383532;
-  /*color: white;*/
-  color: #383532;
-  font-size: 4px;
+  color: #978b82; 
+  /*color: #383532;*/
+  /*font-size: 4px;*/
+  text-align: center;
+  font-weight: bold;
   border-radius: 5px;
   height: 100%;
   max-width: 30px;
@@ -133,7 +136,7 @@ hr {
   margin: 0 0 0 4px;
 }
 
-.time-taken, .num-comp{
+.time-taken, .num-comp, .num-swap{
   align-items: center;
   background-color: #d79a2121;
   border-radius: 5px;
@@ -146,6 +149,11 @@ hr {
   padding: 5px;
   padding-right: 8px;
   width: 160px;
+}
+
+.num-swap {
+  background-color: rgba(172, 215, 33, 0.165);
+  color: #ebdbb2c3;
 }
 
 .num-comp {
